@@ -1,0 +1,14 @@
+introspection:
+  removeTrailingPeriodFromDescriptions: false
+  url: http://localhost:8000/graphql
+  queryNameStrategy: capitalizeFirst
+  fieldExpansionDepth: 3
+
+info:
+  title: Social Media API Demo Documentation
+  description: This is the documentation for a demo API for a social media application
+
+servers:
+  - url: http://localhost:8000/graphql
+    description: Production
+    production: true
