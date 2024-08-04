@@ -1,4 +1,4 @@
-# Fueled NodeJS GraphQL starter template
+# Social Media Demo API
 
 This repo contains an api demo for a social media application.
 
@@ -52,4 +52,24 @@ To run a specific container only:
 
 ```
 docker-compose up [-d] <container_name>
+```
+
+## Database
+
+To create new migrations from changes made in the schema:
+
+```
+docker compose exec app npx prisma migrate dev
+```
+
+To seed database:
+
+```
+docker compose exec app npx prisma db seed
+```
+
+To reset database:
+
+```
+docker compose exec app npx prisma migrate reset
 ```

@@ -9,9 +9,60 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Placeholder, please remove or replace.
+model Comment {
+  id          Int      @id @default(autoincrement())
+  message     String
+  userId      Int      @map("user_id")
+  user        User     @relation(fields: [userId], references: [id])
+  postId      Int      @map("post_id")
+  post        Post     @relation(fields: [postId], references: [id])
+  commentedAt DateTime @default(now()) @map("commented_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("comments")
+}
+
+model Post {
+  id        Int       @id @default(autoincrement())
+  title     String
+  body      String
+  userId    Int       @map("user_id")
+  user      User      @relation(fields: [userId], references: [id])
+  postedAt  DateTime  @default(now()) @map("posted_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  comments  Comment[]
+
+  @@map("posts")
+}
+
+model Rating {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  user      User     @relation("ratings", fields: [userId], references: [id])
+  rating    Int
+  raterId   Int      @map("rater_id")
+  rater     User     @relation("myRatings", fields: [raterId], references: [id])
+  ratedAt   DateTime @default(now()) @map("rated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("ratings")
+}
+
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id             Int       @id @default(autoincrement())
+  email          String    @unique
+  name           String
+  githubUsername String?   @map("github_username")
+  registeredAt   DateTime  @default(now()) @map("registered_at")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @default(now()) @updatedAt @map("updated_at")
+  posts          Post[]
+  comments       Comment[]
+  myRatings      Rating[]  @relation("myRatings")
+  ratings        Rating[]  @relation("ratings")
+
+  @@map("users")
 }
