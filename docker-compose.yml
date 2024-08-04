@@ -1,5 +1,4 @@
 version: "3.9"
-
 services:
   app:
     # This prevents Prisma issues on M1 macs. Issue specifically around Node Alpine images.
@@ -14,21 +13,25 @@ services:
       - "${HTTP_PORT:-8000}:${HTTP_PORT:-8000}"
     command: sh -c "npx prisma migrate dev && npm run start:dev"
     depends_on:
-      - postgres
+      db:
+        condition: service_healthy
     environment:
-      - DATABASE_URL=postgresql://${PG_USER}:${PG_PASSWORD}@postgres:5432/${PG_DB}
-
-  postgres:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
+  db:
     image: postgres:14
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+    restart: always
     environment:
-      - POSTGRES_DB=${PG_DB}
-      - POSTGRES_USER=${PG_USER}
-      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      PGUSER: postgres
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d postgres -U postgres" ]
+      interval: 1s
+      timeout: 5s
+      retries: 10
     ports:
-      - "5432:5432"
-
+      - "54325:5432"
   redis:
     image: redis:latest
     ports:

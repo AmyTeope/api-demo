@@ -1,6 +1,6 @@
 # Build step
 
-FROM node:18-alpine as builder
+FROM node:21 as builder
 
 WORKDIR /var/app
 
@@ -12,7 +12,7 @@ RUN npm run build
 
 # Production step
 
-FROM node:18-alpine as production
+FROM node:21 as production
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
