@@ -85,3 +85,15 @@ To generate code from graphql schema and operations (graphql.ts). To read more [
 ```
 npx graphql-codegen
 ```
+
+## Documentation
+
+Detailed documentation has been generated using Spectaql and can be found at the following link: http://localhost:8000/docs/
+
+To update documentation run the following command:
+
+```
+npx spectaql spectal-config.yml
+```
+
+For basic examples used in Postman please click on the following [link](https://docs.google.com/document/d/1JFnHrq-Stvegreys2igtCHi-FybkalfY/view).

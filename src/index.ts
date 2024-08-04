@@ -16,11 +16,14 @@ async function main(): Promise<void> {
 
   await startGraphQLServer(app, httpServer);
 
+  //Link to spectaql generated API docs
+  app.use('/docs', express.static('public'))
+
   // Start Express server.
   await new Promise<void>((resolve) => httpServer.listen(config.http.port, resolve));
   console.log(
     "[Server] Server is running on " +
-      `http://${config.http.host}:${config.http.port} in ${app.get("env") as string} mode.`
+    `http://${config.http.host}:${config.http.port} in ${app.get("env") as string} mode.`
   );
   console.log("[Server] Press CTRL-C to stop.\n");
 }
