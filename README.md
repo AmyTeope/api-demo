@@ -73,3 +73,15 @@ To reset database:
 ```
 docker compose exec app npx prisma migrate reset
 ```
+
+To generate mutations, queries, and InputTypes:
+
+```
+pal g ${OPTIONAL MODEL}
+```
+
+To generate code from graphql schema and operations (graphql.ts). To read more [click here](https://the-guild.dev/graphql/codegen/docs/advanced/how-does-it-work)
+
+```
+npx graphql-codegen
+```

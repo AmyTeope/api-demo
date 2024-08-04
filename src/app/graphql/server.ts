@@ -4,21 +4,18 @@ import {
 } from "apollo-server-core";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
-import { readFileSync } from "fs";
 import http from "http";
 import config from "../../config";
-import resolvers from "../resolvers";
 import { getGraphQLContext } from "./context";
+import { schema } from "./schema";
 
 export async function startGraphQLServer(
   app: express.Application,
   httpServer: http.Server
 ): Promise<void> {
-  const typeDefs = readFileSync(`${__dirname}/schema.graphql`).toString("utf-8");
 
   const server = new ApolloServer({
-    typeDefs,
-    resolvers,
+    schema,
     context: getGraphQLContext,
     plugins: [
       ApolloServerPluginLandingPageGraphQLPlayground(),
