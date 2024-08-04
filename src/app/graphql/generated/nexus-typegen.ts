@@ -2668,6 +2668,7 @@ export interface NexusGenFieldTypes {
   User: {
     // field return type
     _count: NexusGenRootTypes["UserCountOutputType"]; // UserCountOutputType!
+    avgRating: number; // Float!
     comments: NexusGenRootTypes["Comment"][]; // [Comment!]!
     createdAt: NexusGenScalars["DateTime"]; // DateTime!
     email: string; // String!
@@ -2988,6 +2989,7 @@ export interface NexusGenFieldTypeNames {
   User: {
     // field return type name
     _count: "UserCountOutputType";
+    avgRating: "Float";
     comments: "Comment";
     createdAt: "DateTime";
     email: "String";

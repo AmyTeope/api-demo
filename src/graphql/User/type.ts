@@ -76,5 +76,19 @@ export const User = objectType({
         return root._count
       },
     })
+    t.field('avgRating', {
+      type: 'Float',
+      async resolve(root: any, _args, { prisma }) {
+        const avg = await prisma.rating.aggregate({
+          _avg: {
+            rating: true,
+          },
+          where: {
+            userId: root.id
+          }
+        })
+        return avg._avg.rating.toFixed(2)
+      },
+    })
   },
 })
