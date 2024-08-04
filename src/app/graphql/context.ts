@@ -1,4 +1,5 @@
 import { ExpressContext } from "apollo-server-express";
+import prisma from "../../prisma-client";
 import { Authenticable, GraphQLContext } from "../../types";
 
 // Replace Authenticable with the user interface
@@ -9,6 +10,7 @@ export const getGraphQLContext = async ({ req, res }: ExpressContext): Promise<C
   const context: Context = {
     req,
     res,
+    prisma
   };
 
   // Implement user retrieval here.
