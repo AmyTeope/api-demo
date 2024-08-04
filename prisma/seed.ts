@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { readFileSync } from 'fs'
 import { parse } from 'csv-parse/sync'
+import { Prisma } from '@prisma/client';
 
 
 const prisma = new PrismaClient();
@@ -13,8 +14,12 @@ async function seed() {
   const files: string[] = ['users', 'posts', 'comments', 'ratings']
 
   for (const file of files) {
+    //Seed file
     await seedFile(file)
+    //Reset sequence for table
+    await prisma.$queryRaw`${Prisma.raw(`SELECT pg_catalog.setval(pg_get_serial_sequence('${file}', 'id'), MAX(id)) FROM ${file};`)}`
   }
+
 
   console.timeEnd(`🌱 Database has been seeded`)
 }
