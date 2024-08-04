@@ -6,7 +6,6 @@ export const UserFindUniqueQuery = queryField('findUniqueUser', {
     where: nonNull('UserWhereUniqueInput'),
   },
   resolve(_parent, { where }, { prisma, select }) {
-    console.log('prisma ', prisma)
     return prisma.user.findUnique({
       where,
       ...select,
