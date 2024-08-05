@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
-/* eslint-disable prefer-const */
 import { ApolloServer } from "apollo-server-express"
 import express from "express"
 import http from "http"
