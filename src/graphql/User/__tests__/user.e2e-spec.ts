@@ -66,7 +66,7 @@ describe("User - GraphQL based HTTP request", () => {
               }
           }
           `,
-        variables: { where: { raterId: { equals: userId }, rating: { gte: 4 } } }
+        variables: { where: { userId: { equals: userId }, rating: { gte: 4 } } }
       }
       const ratingRep = await request(httpServer).post("/graphql").send(ratingsQuery)
       const ratingBody = await ratingRep.body

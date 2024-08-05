@@ -45,7 +45,7 @@ export const GetActivityFeedQuery = queryField('getActivityFeed', {
     //Get ratings by cursor pagination
     const ratings = await prisma.rating.findMany({
       where: {
-        raterId: userId,
+        userId,
         rating: { gte: 4 },
         ...(ratingCursor && { id: { lt: ratingCursor } }),
       },
