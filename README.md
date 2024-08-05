@@ -127,3 +127,13 @@ To run the tests please use the following command:
 ```
 npm run test:e2e
 ```
+
+## Coming Soon
+
+-> JWT Authentication
+-> Authorization with graphql-authz
+-> Input validation with [graphql-constraint-directive](https://escape.tech/blog/graphql-input-validation-and-sanitization/)
+-> Input sanitize with [dompurify](https://escape.tech/blog/graphql-input-validation-and-sanitization/)
+-> Error Handling
+-> API Monitoring with Sentry
+-> Always More tests...
