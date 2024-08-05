@@ -2158,6 +2158,7 @@ export enum TransactionIsolationLevel {
 export type User = {
   __typename?: "User";
   _count: UserCountOutputType;
+  avgRating: Scalars["Float"]["output"];
   comments: Array<Comment>;
   createdAt: Scalars["DateTime"]["output"];
   email: Scalars["String"]["output"];

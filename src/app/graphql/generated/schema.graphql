@@ -1388,6 +1388,15 @@ type Query {
   findUniquePost(where: PostWhereUniqueInput!): Post
   findUniqueRating(where: RatingWhereUniqueInput!): Rating
   findUniqueUser(where: UserWhereUniqueInput!): User
+  getActivityFeed(
+    commentCursor: Int
+    ghLastCount: Int
+    ghTotalCount: Int
+    limit: Int!
+    postCursor: Int
+    ratingCursor: Int
+    userId: Int!
+  ): Json
 }
 
 enum QueryMode {
