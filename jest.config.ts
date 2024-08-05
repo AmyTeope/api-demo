@@ -3,9 +3,6 @@ export default {
   coverageDirectory: "coverage",
   coverageProvider: "v8",
   modulePaths: ["<rootDir>"],
-  moduleNameMapper: {
-    "^axios$": "axios/dist/node/axios.cjs"
-  },
   preset: "ts-jest",
   rootDir: "./",
   setupFiles: ['<rootDir>/setEnvVars.js'],
@@ -14,5 +11,5 @@ export default {
   transform: {
     "^.+\\.(t|j)s$": "ts-jest",
   },
-  transformIgnorePatterns: ["/node_modules/"],
+  transformIgnorePatterns: ["/node_modules/", "/node_modules/(?!(axios)/)"],
 };

@@ -15,7 +15,25 @@ The following will install all necessary packages and run the app under developm
 npm install
 ```
 
-## Docker Setup
+Install Packages with Homebrew for OS X.
+
+- https://brew.sh
+
+```
+brew install yarn docker
+```
+
+**Steps**
+
+1. Start Docker.
+2. Open the terminal and go to the root of the project.
+3. Run `$ docker compose build`.
+4. Run `$ docker compose up` or `$ docker compose up -d` to run it in the background.
+5. Open a new terminal tab/window and run `$docker compose exec app npx prisma db seed`
+
+Additional information for Docker, the database, documentation, and testing can be found below.
+
+## Docker
 
 A Dockerfile is available to run the backend services in a container exposed through ports. The Docker container
 includes the hot reloading Node application, PostgresSQL database, and Redis for caching.
@@ -88,7 +106,11 @@ npx graphql-codegen
 
 ## Documentation
 
-Detailed documentation has been generated using Spectaql and can be found at the following link: http://localhost:8000/docs/
+Detailed documentation has been generated using Spectaql.
+
+A live version can be found on on the following link: https://api-demo-docs-30dd2fff303c.herokuapp.com/
+
+Link to view the documentation localally: http://localhost:8000/docs/
 
 To update documentation run the following command:
 
@@ -97,3 +119,11 @@ npx spectaql spectal-config.yml
 ```
 
 For basic examples used in Postman please click on the following [link](https://docs.google.com/document/d/1JFnHrq-Stvegreys2igtCHi-FybkalfY/view).
+
+## Testing
+
+To run the tests please use the following command:
+
+```
+npm run test:e2e
+```
