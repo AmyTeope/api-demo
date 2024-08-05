@@ -2607,6 +2607,7 @@ export interface NexusGenFieldTypes {
     findUniquePost: NexusGenRootTypes["Post"] | null; // Post
     findUniqueRating: NexusGenRootTypes["Rating"] | null; // Rating
     findUniqueUser: NexusGenRootTypes["User"] | null; // User
+    getActivityFeed: NexusGenScalars["Json"] | null; // Json
   };
   Rating: {
     // field return type
@@ -2928,6 +2929,7 @@ export interface NexusGenFieldTypeNames {
     findUniquePost: "Post";
     findUniqueRating: "Rating";
     findUniqueUser: "User";
+    getActivityFeed: "Json";
   };
   Rating: {
     // field return type name
@@ -3332,6 +3334,16 @@ export interface NexusGenArgTypes {
     findUniqueUser: {
       // args
       where: NexusGenInputs["UserWhereUniqueInput"]; // UserWhereUniqueInput!
+    };
+    getActivityFeed: {
+      // args
+      commentCursor?: number | null; // Int
+      ghLastCount?: number | null; // Int
+      ghTotalCount?: number | null; // Int
+      limit: number; // Int!
+      postCursor?: number | null; // Int
+      ratingCursor?: number | null; // Int
+      userId: number; // Int!
     };
   };
   User: {
