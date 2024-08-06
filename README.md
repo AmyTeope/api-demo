@@ -2,6 +2,8 @@
 
 This repo contains an api demo for a social media application.
 
+**NOTE**: There is a rails version that is still a work in progress. [Click here](https://github.com/AmyTeope/api_demo_rails) to view.
+
 ## Requirements
 
 - NodeJS v21+
